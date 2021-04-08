@@ -27,7 +27,7 @@ public class Tokenizador {
     }
 
     /**
-     * @author Rudik Roberto Rompich, Github: wsaldana.
+     * @author Rudik Roberto Rompich, Walter Saldana.
      * @since 8-04-2021
      * @version 1.0
      * @param stringseparados el string que recibe de Tokensbebe.

@@ -13,7 +13,7 @@ import static java.lang.String.*;
  */
 public class Condiciones {
     /**
-     * @author Rudik Roberto Rompich, Github: wsaldana.
+     * @author Rudik Roberto Rompich, Walter Saldana.
      * @since 8-04-2021
      * @version 1.0
      * @param stackito es un String stack basado en la implementacion de de Istack.java, el parametro ya es un stack sin parentesis y ordenado.
