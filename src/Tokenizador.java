@@ -34,7 +34,9 @@ public class Tokenizador {
         try {
             funciones.shift();
             String funcionombre = funciones.shift();
+
             String parametro = funciones.shift();
+
             diccionario_general.put(funcionombre+"def", "0");
 
             Istack<String> FuncionFinal = new Istack<>();

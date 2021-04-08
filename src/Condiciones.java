@@ -1,36 +1,37 @@
 import static java.lang.Double.parseDouble;
+import static java.lang.String.*;
 
 public class Condiciones {
-    public String nombres(Stack<String> a){
+    public String nombres(Stack<String> stackito){
 
-        String val = "";
+        String valor = "";
 
-        String pop = a.pop();
+        String pop = stackito.pop();
 
         switch (pop) {
             case "ATOM":
                 try {
-                    val = String.valueOf(parseDouble(a.pop()));
+                    valor = valueOf(parseDouble(stackito.pop()));
                 } catch (Exception e) {
-                    val = " ";
+                    valor = " ";
                 }
                 break;
             case "WRITE":
-                System.out.println(nombres(a));
+                System.out.println(nombres(stackito));
                 break;
             case "SETQ":
-                Interprete.diccionario.put(a.pop(), nombres(a));
+                Interprete.diccionario.put(stackito.pop(), nombres(stackito));
                 break;
 
             case "-":
-                val = String.valueOf(parseDouble(nombres(a)) - parseDouble(nombres(a)));
+                valor = valueOf(parseDouble(nombres(stackito)) - parseDouble(nombres(stackito)));
                 break;
             case "+":
-                val = String.valueOf(parseDouble(nombres(a)) + parseDouble(nombres(a)));
+                valor = valueOf(parseDouble(nombres(stackito)) + parseDouble(nombres(stackito)));
                 break;
             case "/":
                 try {
-                    val = String.valueOf(parseDouble(nombres(a)) / parseDouble(nombres(a)));
+                    valor = valueOf(parseDouble(nombres(stackito)) / parseDouble(nombres(stackito)));
                 } catch (Exception e) {
                     System.out.println("Indefinido como tu genero xd - " + e.getMessage());
                     return "0";
@@ -38,38 +39,38 @@ public class Condiciones {
 
                 break;
             case "*":
-                val = String.valueOf(parseDouble(nombres(a)) * parseDouble(nombres(a)));
+                valor = valueOf(parseDouble(nombres(stackito)) * parseDouble(nombres(stackito)));
                 break;
             case "<":
-                val = String.valueOf(parseDouble(nombres(a)) < parseDouble(nombres(a)));
+                valor = valueOf(parseDouble(nombres(stackito)) < parseDouble(nombres(stackito)));
                 break;
             case ">":
-                val = String.valueOf(parseDouble(nombres(a)) > parseDouble(nombres(a)));
+                valor = valueOf(parseDouble(nombres(stackito)) > parseDouble(nombres(stackito)));
                 break;
             case "EQUAL":
-                val = String.valueOf(nombres(a).equals((nombres(a))));
+                valor = valueOf(nombres(stackito).equals((nombres(stackito))));
                 break;
 
             case "COND":
-                if (nombres(a).equals("true")) {
-                    val = nombres(a);
+                if (nombres(stackito).equals("true")) {
+                    valor = nombres(stackito);
                 } else {
-                    val = "";
+                    valor = "";
                 }
                 break;
             default:
                 if (Interprete.diccionario.containsKey(pop)) {
-                    val = Interprete.diccionario.get(pop);
+                    valor = Interprete.diccionario.get(pop);
                 } else if (Interprete.funciones.containsKey(pop)) {
-                    Interprete.diccionario.put(pop + "def", nombres(a));
-                    val = nombres(Interprete.funciones.get(pop));
+                    Interprete.diccionario.put(pop + "def", nombres(stackito));
+                    valor = nombres(Interprete.funciones.get(pop));
                 } else {
-                    val = pop;
+                    valor = pop;
                 }
                 break;
         }
-        Interprete.stack = a;
-        return val;
+        Interprete.stack = stackito;
+        return valor;
     }
     
 }
